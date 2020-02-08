@@ -4,10 +4,9 @@ import random
 from matplotlib import pyplot
 
 def line(cond, param, op):
-  scond = ["hoge", "fuga"][cond]
   sparam = ["foo", "bar", "baz" ][param]
   sop = ["aap", "noot", "mies", "zus", "jet" ][op]
-  ary=[scond,sparam,sop]
+  ary=[sparam,sop]
   for x in range(100):
     noise = random.normalvariate(1, 0.3)
     v = math.pow( 1.1+math.sin((cond+1.0) * (x*x) * 1e-3), param*2+1) * math.pow(10, param) * noise
