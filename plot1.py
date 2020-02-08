@@ -25,21 +25,24 @@ def write_pdf(fn):
 def plot_op(fig, hoge, fuga, op):
     params = ["foo", "bar", "baz"]
     for ix in range(len(params)):
-      sparam = params[ix]
-      graph = fig.add_subplot(3, 1, ix+1)  # nrows, ncols, index
-      key = [sparam, op]
-      for name, data in [["hoge", hoge], ["fuga", fuga]]:
-        seq = [x for x in data if x[0:2]==key][0]
-        y = seq[2]
-        x=range(len(y))
-        graph.plot(x,y)
+        sparam = params[ix]
+        graph = fig.add_subplot(3, 1, ix+1)  # nrows, ncols, index
+        graph.set_title(sparam)
+        key = [sparam, op]
+        for name, data in [["hoge", hoge], ["fuga", fuga]]:
+            seq = [x for x in data if x[0:2] == key][0]
+            y = seq[2]
+            x = range(len(y))
+            graph.plot(x, y, label=name)
+            graph.legend()
 
 
 def main():
-    hoge=read_csv("hoge.csv")
-    fuga=read_csv("fuga.csv")
+    hoge = read_csv("hoge.csv")
+    fuga = read_csv("fuga.csv")
     for op in ["aap", "noot", "mies", "zus", "jet"]:
         plot_op(pyplot.figure(), hoge, fuga, op)
+        pyplot.tight_layout()
     write_pdf("graph.pdf")
 
 
