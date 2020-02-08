@@ -15,11 +15,8 @@ for page_ix in range(3):
     axis2 = fig.add_subplot(2, 1, 2)  # nrows, ncols, index
     axis2.plot(x, y2)
 
-pdf = PdfPages('test2.pdf')
-
-fignums = pyplot.get_fignums()
-for fignum in fignums:
-    pyplot.figure(fignum)
-    pdf.savefig()
-
-pdf.close()
+with PdfPages('test2.pdf') as pdf:
+    fignums = pyplot.get_fignums()
+    for fignum in fignums:
+        pyplot.figure(fignum)
+        pdf.savefig()
