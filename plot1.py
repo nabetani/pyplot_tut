@@ -23,6 +23,7 @@ def write_pdf(fn):
 
 
 def plot_op(fig, hoge, fuga, op):
+    fig.suptitle(op)
     params = ["foo", "bar", "baz"]
     for ix in range(len(params)):
         sparam = params[ix]
@@ -35,6 +36,11 @@ def plot_op(fig, hoge, fuga, op):
             x = range(len(y))
             graph.plot(x, y, label=name)
             graph.legend()
+        graph.set_ylabel(sparam+' value')
+    pyplot.tight_layout()
+    fig.text(0.5, 0.02, 'x label', ha='center', va='center')
+    fig.subplots_adjust(top=0.9)
+    fig.align_labels()
 
 
 def main():
@@ -42,7 +48,6 @@ def main():
     fuga = read_csv("fuga.csv")
     for op in ["aap", "noot", "mies", "zus", "jet"]:
         plot_op(pyplot.figure(), hoge, fuga, op)
-        pyplot.tight_layout()
     write_pdf("graph.pdf")
 
 
