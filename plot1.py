@@ -43,11 +43,15 @@ def plot_op(fig, hoge, fuga, op):
     fig.align_labels()
 
 
+A4_PORTRAIT = (8.27, 11.69)
+A4_LANDSCAPE = (11.69, 8.27)
+
+
 def main():
     hoge = read_csv("hoge.csv")
     fuga = read_csv("fuga.csv")
     for op in ["aap", "noot", "mies", "zus", "jet"]:
-        plot_op(pyplot.figure(), hoge, fuga, op)
+        plot_op(pyplot.figure(figsize=A4_PORTRAIT), hoge, fuga, op)
     write_pdf("graph.pdf")
 
 
