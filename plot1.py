@@ -44,15 +44,3 @@ def main():
 
 
 main()
-exit(0)
-
-for page_ix in range(3):
-    x=np.linspace(0, 2 * np.pi, 400)
-    t=np.power(x, page_ix+1)
-    y1=np.sin(t)
-    y2=np.cos(t)
-    fig=pyplot.figure()
-    axis1=fig.add_subplot(2, 1, 1)  # nrows, ncols, index
-    axis1.plot(x, y1)
-    axis2=fig.add_subplot(2, 1, 2)  # nrows, ncols, index
-    axis2.plot(x, y2)
